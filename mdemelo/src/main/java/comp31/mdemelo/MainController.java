@@ -15,4 +15,12 @@ public class MainController {
         model.addAttribute("userId", userId);
         return"home";
     }
+
+    @GetMapping("/image")
+    public String image(Model model)
+    {
+        model.addAttribute("name", "Ellie");
+        return "imagePage";
+        
+    }
 }
