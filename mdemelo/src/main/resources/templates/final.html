@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Test</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Add your additional styles here */
+    .valentine-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .valentine-gif {
+      /* Add styles for the gif container */
+      display: inline-block;
+      margin-right: 10px;
+    }
+
+    .valentine-buttons {
+      margin-top: 20px;
+    }
+
+    .valentine-buttons button {
+      margin: 5px;
+      padding: 10px 20px;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    #imagesButton {
+      background-color: #3498db;
+      color: white;
+    }
+
+    #dateButton {
+      background-color: #e74c3c;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="valentine-decorations">
+    <!-- Valentine's decorations here (hearts, etc.) -->
+    <div class="heart" style="top: 5%; left: 30%;"></div>
+    <div class="heart" style="top: -8%; left: 62%;"></div>
+    <div class="heart" style="top: 55%; left: 2%;"></div>
+    <div class="heart" style="top: 40%; left: 92%;"></div>
+    <div class="heart" style="top: 10%; left: 50%;"></div>
+    <div class="heart" style="top: -30%; left: 10%;"></div>
+    <div class="heart" style="top: -50%; left: 71%;"></div>
+    <div class="heart" style="top: -60%; left: 40%;"></div>
+    <div class="heart" style="top: -30%; left: 30%;"></div>
+    <div class="heart" style="top: -120%; left: 10%;"></div>
+    <div class="heart" style="top: -60%; left: 70%;"></div>
+    <div class="heart" style="top: -155%; left: 90%;"></div>
+    <!-- Add more hearts as needed -->
+  </div>
+
+  <h1>THANK U SOOO MUCH FOR BEING IN MY LIFE I LOVE U SO MUCH LIKE CRAZY A LOT</h1>
+
+  <div class="valentine-container">
+    <div class="valentine-gif">
+      <!-- Add the link for your gif here -->
+      <img src="https://media.tenor.com/dTkq2FK0nMcAAAAi/heart-love.gif" alt="Valentine's Gif" width="200" height="200">
+    </div>
+    <h3> Click these to go back to one of the activities</h3>
+    <div class="valentine-buttons">
+      <button id="imagesButton" onclick="redirectToImages()">Images</button>
+      <button id="dateButton" onclick="redirectToDate()">Virtual date</button>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    function redirectToImages() {
+      window.location.href = '/images';
+    }
+
+    function redirectToDate() {
+      window.location.href = '/date';
+    }
+  </script>
+</body>
+
+</html>

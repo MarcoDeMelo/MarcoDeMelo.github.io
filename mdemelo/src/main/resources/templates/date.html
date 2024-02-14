@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Virtual Date</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    /* Add your additional styles here */
+    .valentine-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .valentine-image-container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .valentine-image {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      cursor: pointer;
+      margin: 10px;
+      border: 2px solid #3498db;
+      transition: border-color 0.3s ease-in-out;
+    }
+
+    .valentine-image.selected {
+      border-color: #e74c3c; /* Red border for selected image */
+    }
+
+    .valentine-text {
+      font-size: 16px;
+      margin-top: 5px;
+    }
+
+    .valentine-indicator {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background-color: #3498db; /* Blue color for selection indicator */
+      margin-top: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+
+    .valentine-indicator.selected {
+      background-color: #e74c3c; /* Red color for selected indicator */
+    }
+
+    .valentine-submit {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="valentine-decorations">
+    <!-- Valentine's decorations here (hearts, etc.) -->
+    <div class="heart" style="top: 5%; left: 30%;"></div>
+    <div class="heart" style="top: -8%; left: 62%;"></div>
+    <div class="heart" style="top: 55%; left: 2%;"></div>
+    <div class="heart" style="top: 40%; left: 92%;"></div>
+    <div class="heart" style="top: 10%; left: 50%;"></div>
+    <div class="heart" style="top: -30%; left: 10%;"></div>
+    <div class="heart" style="top: -50%; left: 71%;"></div>
+    <div class="heart" style="top: -60%; left: 40%;"></div>
+    <div class="heart" style="top: -30%; left: 30%;"></div>
+    <div class="heart" style="top: -120%; left: 10%;"></div>
+    <div class="heart" style="top: -60%; left: 70%;"></div>
+    <div class="heart" style="top: -155%; left: 90%;"></div>
+    <!-- Add more hearts as needed -->
+  </div>
+
+  <h1>VIRTUAL DATE :3</h1>
+  <h3>Pick your date location</h3>
+
+  <div class="valentine-container">
+    <div class="valentine-image-container">
+      <div>
+        <img src="Images/date1.jpg" alt="Image 1" class="valentine-image" id="image1" onclick="selectImage(1)">
+        <div class="valentine-text" id="text">BEACH DATE!!</div>
+        <div class="valentine-indicator" id="indicator1"></div>
+      </div>
+      
+      <div>
+        <img src="Images/date2.jpg" alt="Image 2" class="valentine-image" id="image2" onclick="selectImage(2)">
+        <div class="valentine-text" id="text2">Picnic date :3 </div>
+        <div class="valentine-indicator" id="indicator2"></div>
+      </div>
+      
+      <div>
+        <img src="Images/date3.jpg" alt="Image 3" class="valentine-image" id="image3" onclick="selectImage(3)">
+        <div class="valentine-text" id="text3">House date:333</div>
+        <div class="valentine-indicator" id="indicator3"></div>
+      </div>
+      
+      <div>
+        <img src="Images/date4.jpg" alt="Image 4" class="valentine-image" id="image4" onclick="selectImage(4)">
+        <div class="valentine-text" id="text4">Restaurant  Date</div>
+        <div class="valentine-indicator" id="indicator4"></div>
+      </div>
+      
+      <div>
+        <img src="Images/date5.jpg" alt="Image 5" class="valentine-image" id="image5" onclick="selectImage(5)">
+        <div class="valentine-text" id="text5">CAT DATE!!! Personal fav btw</div>
+        <div class="valentine-indicator" id="indicator5"></div>
+      </div>
+    </div>
+    <button class="valentine-submit" onclick="submitSelection()">Submit</button>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    let selectedImage = 0;
+    let submissionCount = 0;
+  
+    function selectImage(imageNumber) {
+      // Remove the 'selected' class from all images and indicators
+      document.querySelectorAll('.valentine-image, .valentine-indicator').forEach(element => {
+        element.classList.remove('selected');
+      });
+  
+      // Add 'selected' class to the clicked image and indicator
+      document.getElementById(`image${imageNumber}`).classList.add('selected');
+      document.getElementById(`indicator${imageNumber}`).classList.add('selected');
+  
+      selectedImage = imageNumber;
+    }
+  
+    function submitSelection() {
+      // Do something with the selected image (if needed)
+      console.log(`Selected Image: ${selectedImage}`);
+      
+      submissionCount++;
+  
+      if (submissionCount === 1) {
+        // Change h3 text and images for the next set (6-11)
+        document.querySelector('h3').innerText = "WHAT WE EATING FOR THE DATE";
+  
+        document.getElementById('image1').src = "Images/date6.jpg";
+        document.getElementById('image2').src = "Images/date7.jpg";
+        document.getElementById('image3').src = "Images/date8.jpg";
+        document.getElementById('image4').src = "Images/date9.jpg";
+        document.getElementById('image5').src = "Images/date10.jpg";
+        
+        document.getElementById('image1').alt = "Image 6";
+        document.getElementById('image2').alt = "Image 7";
+        document.getElementById('image3').alt = "Image 8";
+        document.getElementById('image4').alt = "Image 9";
+        document.getElementById('image5').alt = "Image 10";
+        
+        // Set text for the new set of indicators
+        document.querySelector('#text').innerText = "SUSHI!!!";
+        document.querySelector('#text2').innerText = "Flesh of the innocent";
+        document.querySelector('#text3').innerText = "PiZZA:PPP";
+        document.querySelector('#text4').innerText = "RAMEN~~~";
+        document.querySelector('#text5').innerText = "Steak dinner";
+  
+        // Update button text
+        document.querySelector('.valentine-submit').innerText = "Submit";
+      } else if (submissionCount === 2) {
+        // Change h3 text and images for the next set (11-15)
+        document.querySelector('h3').innerText = "WHAT'S THE FINAL DATE PLAN?";
+  
+        document.getElementById('image1').src = "Images/date11.jpg";
+        document.getElementById('image2').src = "Images/date12.jpg";
+        document.getElementById('image3').src = "Images/date13.jpg";
+        document.getElementById('image4').src = "Images/date14.jpg";
+        document.getElementById('image5').src = "Images/date15.jpg";
+        
+        document.getElementById('image1').alt = "Image 11";
+        document.getElementById('image2').alt = "Image 12";
+        document.getElementById('image3').alt = "Image 13";
+        document.getElementById('image4').alt = "Image 14";
+        document.getElementById('image5').alt = "Image 15";
+        
+        // Set text for the new set of indicators
+        document.querySelector('#text').innerText = "FUCK THE GOVERMENT";
+        document.querySelector('#text2').innerText = "LAUGHT AT KIDS";
+        document.querySelector('#text3').innerText = "FUCKING";
+        document.querySelector('#text4').innerText = "A Nice movie";
+        document.querySelector('#text5').innerText = "A FUCKING BLUNT!!!!";
+        
+        // Update button text
+        document.querySelector('.valentine-submit').innerText = "Final";
+      } else if (submissionCount === 3) {
+        // For the final submission, change the text to "YIPEE!!!" and remove images
+        
+        window.location.href = "/final";
+       
+      }
+    }
+  </script>

@@ -1,12 +1,205 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Image</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test Test</title>
+  <link rel="stylesheet" href="/style.css">
+  <style>
+    .valentine-text {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    .image-container {
+      margin-top: 20px;
+      position: relative;
+    }
+
+    .image {
+      max-width: 100%;
+      max-height: 400px; /* Set your preferred maximum height */
+      height: auto;
+    }
+
+    .arrow-container {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+    }
+
+    .arrow {
+      width: 0;
+      height: 0;
+      border-style: solid;
+      display: inline-block;
+      margin: 0 10px;
+    }
+
+    .left-arrow {
+      border-width: 15px 25px 15px 0;
+      border-color: transparent white transparent transparent;
+    }
+
+    .right-arrow {
+      border-width: 15px 0 15px 25px;
+      border-color: transparent transparent transparent white;
+    }
+
+    .image-description {
+      text-align: center;
+      font-size: 16px;
+      margin-top: 10px;
+      padding: 10px;
+      background-color: white;
+      color: black;
+      border: 2px solid black;
+      border-radius: 5px;
+      max-width: 450px; /* Set your preferred maximum width */
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .button-container {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+    }
+
+    .go-to-date-button {
+      background-color: #f2f2f2; /* Darkish white */
+      color: red;
+      padding: 10px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
 </head>
+
 <body>
-    <img width="400px" th:src="'/images/' +${name} + '.jpg'" alt="Ellie">
-    
+  <div class="valentine-decorations">
+    <!-- Valentine's decorations here (hearts, etc.) -->
+    <div class="heart" style="top: 5%; left: 30%;"></div>
+    <div class="heart" style="top: -8%; left: 62%;"></div>
+    <div class="heart" style="top: 55%; left: 2%;"></div>
+    <div class="heart" style="top: 40%; left: 92%;"></div>
+    <div class="heart" style="top: 10%; left: 50%;"></div>
+    <div class="heart" style="top: -30%; left: 10%;"></div>
+    <div class="heart" style="top: -50%; left: 71%;"></div>
+    <div class="heart" style="top: -60%; left: 40%;"></div>
+    <div class="heart" style="top: -30%; left: 30%;"></div>
+    <div class="heart" style="top: -120%; left: 10%;"></div>
+    <div class="heart" style="top: -60%; left: 70%;"></div>
+    <div class="heart" style="top: -155%; left: 90%;"></div>
+    <!-- Add more hearts as needed -->
+  </div>
+
+  <h1>YIPEEEE :3</h1>
+
+  <div class="valentine-container">
+    <div class="valentine-text" id="imageText">
+      1/47
+    </div>
+    <div class="image-container">
+      <img src="Images/image1.jpg" alt="Image" class="image" id="image">
+      <div class="image-description" id="imageDescription">
+        I just had to start us off with the handsome/chad versions of us, i love this pic it's so funny to me
+      </div>
+      <div class="arrow-container">
+        <div class="arrow left-arrow" onclick="changeImage(-1)"></div>
+        <div class="arrow right-arrow" onclick="changeImage(1)"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <button class="go-to-date-button" onclick="goToVirtualDate()">Go to Virtual Date</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <script>
+    let currentImage = 1;
+    const totalImages = 47;
+
+    // Array of image descriptions
+    const imageDescriptions = [
+      "I just had to start us off with the handsome/chad versions of us, i love this pic it's so funny to me", 
+      "This is when we went to the beach with ur family, I had so much fun that day hehe. Can't believe we smoked in the middle of the park tho LMAO",
+      "This is on ur way to the beach, I'm so glad jord took this pic. I LOVE THIS PIC WE LOOK SO CUTE TOGETHER",
+      "GET UR OWN HAT U GOBLIN",
+      "THOSE JOINT HOLDERS WERE SO COOL I NEVER USE IT THO. I feel like they're meant for HUGE joints but like :P",
+      "Our aniversay date went AWFUL. but i had a lot of fun, anywhere with u would be fun.",
+      "I wish the light glare didn't ruin this picture. Still a really fun day and good pic tho",
+      "I LOVE THIS PIC OF US, we want beer makes the entire thing.",
+      "Us just relaxing together<3",
+      "I WISH THE QUALITY OF THE PIC WAS BETTER BUT AHHH U LOOK SO CUTE",
+      "We are litteraly BLURRS IN THIS IMAGE WFFWWQ",
+      "All i remember from this is that we came after our walk and the food was okay",
+      "Look at us just standing there.... MENACINGLY!",
+      "Blurry pic of us holding hands <3",
+      "UGH U LOOKED SO CUTE!!!! Fnaf movie was whatever tho",
+      "You eeping lol",
+      "U COMFY? HMMMM",
+      "Btw there's a few of you just sleeping wfqwqw",
+      "EXTREMLY BLURRY PIC OF US? I THINK LOL",
+      "WHY DID I MAKE THIS FACE WFWQWFQF",
+      "You're JUst SO EEEPY",
+      "Us 3 Cuddling",
+      "Why does ur dawg keep trying to rizz me up",
+      "Only pic i got of us for new years Wwfqwqf",
+      "This is just afte we dyed my hair lol",
+      "I don't remember much about this img but we look cute in it",
+      "You're so COMFTY",
+      "In your backyard weqwwqe",
+      "IT WAS SNOWING SO MUCH THAT DAY. LOVE U",
+      "I love the angle in this one wqfwqwqf",
+      "We are supprised :3 ",
+      "UR HANDS WERE TOO COLD TO HOLD THE JOINT FQWFFWQW",
+      "Us <3",
+      "I DON'T REMEMBER SHIT FROM THIS IMG BUT WE LOOK LIKE WE'RE HAVING A BLAST",
+      ":O",
+      "Us smoking on bench near my old place qefwqf",
+      "THESE WERE SO CUTE WQFWQWQFW",
+      "Bape kiss",
+      "More interested in vape then u hehe",
+      "WEIRDISH PIC OF ME ",
+      "I swear i've used this image before but uhhh I LOVE U MORE THEN VAPES WFQQW",
+      "Us with that stupid toy qwfwqfwq",
+      "YOU'RE JUST SO EEEPY",
+      "SEE UR SO EEEPY",
+      "I LOVE WHEN U WEAR THAT HAT IT'S SO AWESOME",
+      "One of the first pics of us together",
+      "OUR FIRST OFFICIAL DATE IT WAS SO MUCH FUN DESPITE THE CUTS fqwffwqfwq",
+      // Add more descriptions as needed
+    ];
+
+    function changeImage(direction) {
+      currentImage += direction;
+      if (currentImage < 1) {
+        currentImage = 1;
+      } else if (currentImage > totalImages) {
+        currentImage = totalImages;
+      }
+
+      // Update image source using a relative path
+      document.getElementById('image').src = `Images/image${currentImage}.jpg`;
+
+      // Update text
+      document.getElementById('imageText').innerText = `${currentImage}/${totalImages}`;
+      
+      // Update description
+      document.getElementById('imageDescription').innerText = imageDescriptions[currentImage - 1];
+    }
+
+    function goToVirtualDate() {
+      // Redirect to the /date URL
+      window.location.href = "/date";
+    }
+  </script>
 </body>
+
 </html>
